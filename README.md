@@ -1,5 +1,12 @@
+
+
+###  NAME: KARTHIKEYAN M
+###  ROLL NO :212223040088
+
+
+
 # EXPERIMENT--02-INTERFACING-A-DIGITAL-INPUT-TO-IOT-DEVELOPMENT-BOARD-
-## 212223040088 
+ 
 
 ## Aim: To Interface a Digital Input  (IR pair ) to ARM IOT development board and write a  program to obtain  the data 
 ## Components required: STM32 CUBE IDE, ARM IOT development board,  STM programmer tool.
@@ -70,35 +77,39 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include "stdbool.h"
+void IRsensor();
+bool IRsensorop;
+while(1)
+{
+	IRsensor();
+}
+void IRsensor()
+{
+IRsensorop=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_3);
+if (IRsensorop==1)
+{
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
+	HAL_Delay(500);
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
+	HAL_Delay(500);
+}
+else
+{
+	HAL_GPIO_WritePin(GPIO,GPIO_PIN_0,GPIO_PIN_RESET);
+}
+}
+```
 
-~~~
-while (1)
-  {
-	  void IRsensor()
-	  	  {
-
-	  		  IRsensorop=HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0);
-	  		  if (IRsensorop==1)
-	  		  {
-	  			  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);
-	  			  HAL_Delay(500);
-	  			  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
-	  			  HAL_Delay(500);
-	  		  }
-	  		  else
-	  				  {
-	  					  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
-	  					  HAL_Delay(500);
-	  				  }
-	  		  
-	  	  }
-  }
-~~~
 
 ## Output  :
- 
- ![Screenshot 2024-09-02 181909](https://github.com/user-attachments/assets/cec3aa2a-4ea9-49aa-ad8c-9908eb7b0266)
+ ![421724487-3090e4a4-581d-4574-85f8-8004ab5a95ca](https://github.com/user-attachments/assets/0199f96a-973c-4f97-bb25-53ab97dff4c0)
 
+ ![421724545-69cd371d-3020-42a9-a7cb-7fceccf02c6c](https://github.com/user-attachments/assets/3fae17a9-0182-4d0d-896f-ed3bf64255f6)
+
+ 
  
  
 ## Result :
